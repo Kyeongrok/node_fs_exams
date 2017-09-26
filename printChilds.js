@@ -4,7 +4,12 @@ const getBoxscores = (json) => json.apiResults[0].league.season.eventType[0].eve
 const getEvent = (json) => json.apiResults[0].league.season.eventType[0].events[0];
 
 const printIsGamePlayedIsGameStarted = (playerStat) =>{
-  console.log('isGamePlayed:%s, isGameStarted:%s', playerStat.isGamePlayed, playerStat.isGameStarted);
+  console.log('%s %s \t\t isGameStarted:%s, isGamePlayed:%s'
+    , playerStat.player.firstName
+    , playerStat.player.lastName
+    , playerStat.isGameStarted
+    , playerStat.isGamePlayed
+  );
 }
 
 module.exports.printMinuteSeconds = (json) =>{
@@ -22,8 +27,12 @@ module.exports.printBoxscore = (json) =>{
   console.log(boxscores);
 }
 
+
+
 module.exports.printPlayerstats = (json) =>{
-  getBoxscores(json)[0].playerStats.forEach(playerStat => {
+  getBoxscores(json)[0].playerStats
+    // .sort((a, b) => a.isGameStarted  )
+    .forEach(playerStat => {
     printIsGamePlayedIsGameStarted(playerStat);
   });
 }

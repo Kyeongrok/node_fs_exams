@@ -7,7 +7,6 @@ const path = './test_data/oct_28/';
 const fileName01 = '11-43-42_basket_stats_live.json';
 
 const fileNameList = fileNamelistGetter.getFileNameList(path);
-
 console.log(fileNameList.length);
 
 let beforeResult = '';
