@@ -2,14 +2,15 @@ const fs = require('fs');
 const path = '.\\';
 const fileNameList = [
   'daum_json.json',
-  'daum_kbl_game2.json'
+  'daum_kbl_game2.json',
+  'daum_kbl_game3.json',
 ]
 
 // console.log(json);
 const printPerson = (teamName) => (person) => console.log('%s,%s,%s,%s,%s,%s',teamName, person.nameMain, person.personId, person.cpPersonId, person.positionName, person.backNumber);
 
 const printData = (filePathName) => homeName => awayName =>{
-  const data = fs.readFileSync(path + 'daum_json.json');
+  const data = fs.readFileSync(filePathName);
   const string = data.toString();
   const json = JSON.parse(string);
 
@@ -26,3 +27,4 @@ const printData = (filePathName) => homeName => awayName =>{
 
 printData(path + fileNameList[0])('안양')('삼성');
 printData(path + fileNameList[1])('고양')('창원');
+printData(path + fileNameList[2])('울산모비스')('부산KT');
